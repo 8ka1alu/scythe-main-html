@@ -4,81 +4,85 @@ background-repeat: no-repeat;
 background-attachment: fixed;
 }
 
-*, *:before, *:after {
-	-webkit-box-sizing: border-box;
-	        box-sizing: border-box;
+/*ヘッダーまわりはサイトに合わせて調整してください*/
+header {
+  padding:10px;
+  background: skyblue;
 }
-.menu {
-	display: block;
-	overflow: hidden;
-	width: 60px;
-	height: 60px;
-	margin: 30px auto;
-	cursor: pointer;
-	-webkit-transition: all 0.5s ease-in-out;
-	        transition: all 0.5s ease-in-out;
-	border: 3px solid transparent;
-	border-radius: 50%;
-	background-color: #1b2538;
+
+#nav-drawer {
+  position: relative;
 }
-.menu div.menubar {
-	width: 30px;
-	margin: 17px auto;
+
+/*チェックボックス等は非表示に*/
+.nav-unshown {
+  display:none;
 }
-.menu div.menubar .bar {
-	display: block;
-	width: 100%;
-	height: 5px;
-	margin-top: 3px;
-	border-radius: 2px;
-	background-color: #ffffff;
+
+/*アイコンのスペース*/
+#nav-open {
+  display: inline-block;
+  width: 30px;
+  height: 22px;
+  vertical-align: middle;
 }
-.menu ul {
-	display: none;
-	margin: 0;
-	padding: 0;
-	list-style-type: none;
-	-webkit-transition: all 0.5s ease;
-	        transition: all 0.5s ease;
-	text-align: center;
-	opacity: 0;
+
+/*ハンバーガーアイコンをCSSだけで表現*/
+#nav-open span, #nav-open span:before, #nav-open span:after {
+  position: absolute;
+  height: 3px;/*線の太さ*/
+  width: 25px;/*長さ*/
+  border-radius: 3px;
+  background: #555;
+  display: block;
+  content: '';
+  cursor: pointer;
 }
-.menu ul li {
-	display: inline-block;
+#nav-open span:before {
+  bottom: -8px;
 }
-.menu ul li a {
-	display: inline-block;
-	padding: 0.7em 0.5em;
-	-webkit-transition: all 0.3s ease-in;
-	        transition: all 0.3s ease-in;
-	text-decoration: none;
-	color: #1b2538;
-	border-bottom: 4px solid transparent;
-	height: 56px;
-	line-height: 2em;
+#nav-open span:after {
+  bottom: -16px;
 }
-.menu ul li a:hover {
-	color: #ffffff;
-	background-color: #1b2538;
+
+/*閉じる用の薄黒カバー*/
+#nav-close {
+  display: none;/*はじめは隠しておく*/
+  position: fixed;
+  z-index: 99;
+  top: 0;/*全体に広がるように*/
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: black;
+  opacity: 0;
+  transition: .3s ease-in-out;
 }
-.menu ul li a:target {
-	border-bottom-color: #1b2538;
+
+/*中身*/
+#nav-content {
+  overflow: auto;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 9999;/*最前面に*/
+  width: 90%;/*右側に隙間を作る（閉じるカバーを表示）*/
+  max-width: 330px;/*最大幅（調整してください）*/
+  height: 100%;
+  background: #fff;/*背景色*/
+  transition: .3s ease-in-out;/*滑らかに表示*/
+  -webkit-transform: translateX(-105%);
+  transform: translateX(-105%);/*左に隠しておく*/
 }
-/* クリックした時の動き */
-#cp_navimenuid {
-	display: none;
+
+/*チェックが入ったらもろもろ表示*/
+#nav-input:checked ~ #nav-close {
+  display: block;/*カバーを表示*/
+  opacity: .5;
 }
-#cp_navimenuid:checked ~ .menu {
-	width: 100%;
-	height: 60px;
-	border: 3px solid #1b2538;
-	border-radius: 5px;
-	background-color: transparent;
-}
-#cp_navimenuid:checked ~ .menu > ul {
-	display: block;
-	opacity: 1;
-}
-#cp_navimenuid:checked ~ .menu > .menubar {
-	display: none;
+
+#nav-input:checked ~ #nav-content {
+  -webkit-transform: translateX(0%);
+  transform: translateX(0%);/*中身を表示（右へスライド）*/
+  box-shadow: 6px 0 25px rgba(0,0,0,.15);
 }
