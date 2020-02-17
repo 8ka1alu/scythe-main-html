@@ -4,102 +4,105 @@ background-repeat: no-repeat;
 background-attachment: fixed;
 }
 
-.header {
-  position: fixed;
-  left: 0;
-  top: 0;
-  width: 100%;
-  height: 40px;
-  background-color: #fff;
-  box-shadow: 0 2px 6px rgba(0,0,0,.16);
+/****メニュー全体****/
+#menu{
+	/*配置*/
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	pointer-events: none;
+	z-index: 100;
 }
-.global-nav {
-  position: fixed;
-  right: -320px; /* これで隠れる */
-  top: 0;
-  width: 300px; /* スマホに収まるくらい */
-  height: 100vh;
-  padding-top: 40px;
-  background-color: #fff;
-  transition: all .6s;
-  z-index: 200;
-  overflow-y: auto; /* メニューが多くなったらスクロールできるように */
+
+/****メニュー開閉ボタン****/
+#menu div{
+	/*デザイン*/
+	width: 30px;
+	height: 30px;
+	background: rgba(200,200,200,1);
+	/*配置*/
+	overflow: hidden;
+	position: absolute;
+	right: 0;
 }
-.hamburger {
-  position: absolute;
-  right: 0;
-  top: 0;
-  width: 40px; /* クリックしやすいようにちゃんと幅を指定する */
-  height: 40px; /* クリックしやすいようにちゃんと高さを指定する */
-  cursor: pointer;
-  z-index: 300;
+
+#menu .menuopen{
+	/*デザイン*/
+	color: rgba(255,255,255,1);
+	font-size: 20px;
+	/*配置*/
+	display: block;
+	width: 100%;
+	height: 100%;
+	position: absolute;
+	top: 0;
+	left: 0;
+	pointer-events: auto;
 }
-.global-nav__list {
-  margin: 0;
-  padding: 0;
-  list-style: none;
+
+#menu .menuclose{
+	/*デザイン*/
+	color: rgba(255,255,255,1);
+	font-size: 20px;
+	/*配置*/
+	display: none;
+	width: 100%;
+	height: 100%;
+	position: absolute;
+	top: 0;
+	left: 0;
+	pointer-events: auto;
 }
-.global-nav__item {
-  text-align: center;
-  padding: 0 14px;
+
+/****メニュー一覧****/
+#menu ul{
+	/*デザイン*/
+	background: rgba(200,200,200,1);
+	width: 80%;
+	/*配置*/
+	position: absolute;
+	top: 30px;/*#menu divの高さ*/
+	right: 0;
+	display: none;
 }
-.global-nav__item a {
-  display: block;
-  padding: 8px 0;
-  border-bottom: 1px solid #eee;
-  text-decoration: none;
-  color: #111;
+
+#menu li{
+	/*デザイン*/
+	padding: 10px;
+	color: rgba(0,0,0,1);
+	border-bottom: 1px rgba(255,255,255,1) solid;
+	/*配置*/
+	pointer-events: auto;
 }
-.global-nav__item a:hover {
-  background-color: #eee;
+
+/****メニューオープン時****/
+#menu:target .menuopen{
+	/*配置*/
+	display: none;
 }
-.hamburger__line {
-  position: absolute;
-  left: 11px;
-  width: 18px;
-  height: 1px;
-  background-color: #111;
-  transition: all .6s;
+
+#menu:target .menuclose{
+	/*配置*/
+	display: block;
 }
-.hamburger__line--1 {
-  top: 14px;
+
+#menu:target ul{
+	/*配置*/
+	display: block;
 }
-.hamburger__line--2 {
-  top: 20px;
+
+/*** メインエフェクト ***/
+#main{
+	/*アニメーション*/
+	-webkit-transition: all 0.3s ease 0s;
+	transition: all 0.3s ease 0s;
 }
-.hamburger__line--3 {
-  top: 26px;
-}
-.black-bg {
-  position: fixed;
-  left: 0;
-  top: 0;
-  width: 100vw;
-  height: 100vh;
-  z-index: 100;
-  background-color: #000;
-  opacity: 0;
-  visibility: hidden;
-  transition: all .6s;
-  cursor: pointer;
-}
-/* 表示された時用のCSS */
-.nav-open .global-nav {
-  right: 0;
-}
-.nav-open .black-bg {
-  opacity: .8;
-  visibility: visible;
-}
-.nav-open .hamburger__line--1 {
-  transform: rotate(45deg);
-  top: 20px;
-}
-.nav-open .hamburger__line--2 {
-  width: 0;
-  left: 50%;
-}
-.nav-open .hamburger__line--3 {
-  transform: rotate(-45deg);
-  top: 20px;
+
+#menu:target ~ #main{
+	-webkit-filter:blur(1px);
+	-moz-filter:blur(1px);
+	-ms-filter:blur(1px);
+	filter:blur(1px);
 }
