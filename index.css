@@ -1,60 +1,138 @@
-body {
-background-image: url("https://cdn.discordapp.com/attachments/670982490999226370/670994964712521751/images-1.jpg");
-background-repeat: no-repeat;
-background-attachment: fixed;
-}
 
-/*メニュー部分*/
-#ham-menu {
-    background-color: #fff; /*メニュー背景色*/
+*{
+    -webkit-box-sizing: border-box;
     box-sizing: border-box;
-    height: 100%;
-    padding: 10px 40px; /*メニュー内部上下左右余白*/
-    position: fixed;
-    right: -300px; /*メニュー横幅①と合わせる*/
-    top: 0;
-    transition: transform 0.3s linear 0s; /*0.3s は変化するのにかかる時間*/
-    width: 300px; /*メニュー横幅①*/
-    z-index: 1000;
 }
 
-/*メニューアイコン部分は疑似要素で*/
-#ham-menu::before {
-    background-color: #fff; /*ボタン部分背景色*/
-    border-radius: 0 0 0 10px; /*左下角丸*/
-    color: #333; /*アイコン（フォント）色*/
-    content: "≡"; /*メニューアイコン*/
-    display: block;
-    font-size: 50px; /*アイコン（フォント）サイズ*/
-    height: 50px;
-    line-height: 50px; /*縦位置中央化*/
-    position: absolute;
-    right: 100%;
-    text-align: center;
-    top: 0;
-    width: 50px;
+body{
+    margin: 0;
+    color: #313131;
+    background-image: url("https://cdn.discordapp.com/attachments/670982490999226370/670994964712521751/images-1.jpg");
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    
 }
 
-/*透過背景部分*/
-#menu-background {
-    background-color: #333; /*黒背景部分背景色*/
-    display: block;
-    height: 100%;
-    opacity: 0;
-    position: fixed;
-    right: 0;
-    top: 0;
-    transition: all 0.3s linear 0s; /*0.3s は変化するのにかかる時間*/
+h2{
+    margin: 0;
+    font-family: "メイリオ", sans-serif;
+    line-height: 100vh;
+}
+
+/* header */
+header {
     width: 100%;
-    z-index: -1;
+    position: relative;
 }
 
-/*hover 時の処理*/
-#ham-menu:hover {
-    transform: translate(-300px); /*メニュー横幅①と合わせる*/
+.pfix{
+    width: 100%;
+    position: fixed;
 }
 
-#ham-menu:hover + #menu-background {
-    opacity: 0.5; /*黒背景部分透過度*/
-    z-index: 999;
+/* nav_menu */
+.nav{
+    position: absolute;
+    height: 100vh;
+    width: 100%;
+    left: -100%;
+    background: rgba(99, 99, 99,.95);
+    -webkit-transition: 1.5s;
+    transition: 1.5s;
+}
+
+ul{
+    margin: 0;
+    padding: 0;
+}
+
+li{
+    height: calc(100vh/5);
+    line-height: 187.39px;
+    list-style-type: none;
+    font-size: 3em;
+    text-align: center;
+}
+
+a{
+    display: block;
+    text-decoration: none;
+    color: #fff;
+}
+
+/* hamburger_line */
+#target {
+    width: 40px;
+    height: 30px;
+    position: absolute;
+    top: 25px;
+    left: 50px;
+    cursor: pointer;
+    display: block;
+    -webkit-transition: 1.5s;
+    transition: 1.5s;
+}
+
+.target_inner{
+    width: 40px;
+    height: 30px;
+    position: relative;
+}
+
+.target_inner_line {
+    display: block;
+    width: 40px;
+    height: 5px;
+    background: #636363;
+    -webkit-transition: 1.5s;
+    transition: 1.5s;
+    border-radius: 50px;
+    position: absolute;
+}
+
+.target_inner_1 {
+    top: 0;
+}
+
+.target_inner_2 {
+    top: 13px;
+}
+
+.target_inner_3 {
+    top: 26px;
+}
+
+/* 動き */
+.fadein{
+    -webkit-transform: translateX(100%);
+    transform: translateX(100%);
+}
+
+.linea,.lineb,.linec{
+    background: #ffffff;
+}
+
+.linea {
+    -webkit-transform: rotate(225deg);
+    transform: rotate(225deg);
+    top: 13px;
+}
+
+.lineb {
+    opacity: 0;
+}
+
+.linec {
+    -webkit-transform: rotate(-225deg);
+    transform: rotate(-225deg);
+    top: 13px;
+}
+
+/* main */
+main section{
+    width: 100%;
+    height: 100vh;
+    margin: 0 auto;
+    text-align: center;
+    line-height: 100vh;
 }
