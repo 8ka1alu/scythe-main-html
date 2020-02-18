@@ -1,65 +1,111 @@
 body {
-  background: #e7efe7;
   background-image: url("https://cdn.discordapp.com/attachments/670982490999226370/670994964712521751/images-1.jpg");
   background-repeat: no-repeat;
   background-attachment: fixed; 
 }
-.navi-btn {
-  width: 50px;
-  height: 62px;
-  position: relative;
-  cursor: pointer;
+nav.globalMenuSp {
+    position: fixed;
+    z-index: 2;
+    top: 0;
+    left: 0;
+    background: #fff;
+    color: #000;
+    text-align: center;
+    transform: translateY(-100%);
+    transition: all 0.6s;
+    width: 100%;
 }
-.navi-btn span {
-  position: absolute;
-  display: block;
-  width: 50px;
-  height: 5px;
-  background: #252525;
-  border-radius: 5px;
-  transition: all .3s;
+ 
+nav.globalMenuSp ul {
+    background: #ccc;
+    margin: 0 auto;
+    padding: 0;
+    width: 100%;
 }
-.navi-btn span:nth-of-type(2) {
-  top: 18px;
-  opacity: 1;
-  transition: all .3s;
+ 
+nav.globalMenuSp ul li {
+    font-size: 1.1em;
+    list-style-type: none;
+    padding: 0;
+    width: 100%;
+    border-bottom: 1px dotted #333;
 }
-.navi-btn span:last-of-type {
-  top: 36px;
+ 
+/* 最後はラインを描かない */
+nav.globalMenuSp ul li:last-child {
+    padding-bottom: 0;
+    border-bottom: none;
 }
-.navi-btn p {
-  color: #252525;
-  text-align: center;
-  position: absolute;
-  top: 45px;
-  left: 2px;
+ 
+nav.globalMenuSp ul li a {
+    display: block;
+    color: #000;
+    padding: 1em 0;
 }
-.navi-btn-on span:first-of-type {
-  transform: rotate(-45deg) translateY(16px) translateX(-13px);
+ 
+/* このクラスを、jQueryで付与・削除する */
+nav.globalMenuSp.active {
+    transform: translateY(0%);
 }
-.navi-btn-on span:nth-of-type(2) {
-  transform: translateX(0);
-  opacity: 0;
+
+.navToggle {
+    display: block;
+    position: fixed;    /* bodyに対しての絶対位置指定 */
+    right: 13px;
+    top: 12px;
+    width: 42px;
+    height: 51px;
+    cursor: pointer;
+    z-index: 3;
+    background: #666;
+    text-align: center;
 }
-.navi-btn-on span:last-of-type {
-  transform: rotate(45deg) translateY(-13px) translateX(-9px);
+ 
+.navToggle span {
+    display: block;
+    position: absolute;    /* .navToggleに対して */
+    width: 30px;
+    border-bottom: solid 3px #eee;
+    -webkit-transition: .35s ease-in-out;
+    -moz-transition: .35s ease-in-out;
+    transition: .35s ease-in-out;
+    left: 6px;
 }
-.navi-menu {
-  top: 80px;
-  display: none;
-  background: #252525;
-  width: 100%;
-  position: fixed;
-  z-index: 100;
-  overflow-y: auto;
+ 
+.navToggle span:nth-child(1) {
+    top: 9px;
 }
-.navi-menu li {
-  list-style-type: none;
+ 
+.navToggle span:nth-child(2) {
+    top: 18px;
 }
-.navi-menu li a {
-  display: block;
-  color: #e7efe7;
-  font-size: 20px;
-  text-decoration: none;
-  padding: 5px 30px;
+ 
+.navToggle span:nth-child(3) {
+    top: 27px;
+}
+ 
+.navToggle span:nth-child(4) {
+    border: none;
+    color: #eee;
+    font-size: 9px;
+    font-weight: bold;
+    top: 34px;
+}
+
+/* 最初のspanをマイナス45度に */
+.navToggle.active span:nth-child(1) {
+    top: 18px;
+    left: 6px;
+    -webkit-transform: rotate(-45deg);
+    -moz-transform: rotate(-45deg);
+    transform: rotate(-45deg);
+}
+ 
+/* 2番目と3番目のspanを45度に */
+.navToggle.active span:nth-child(2),
+.navToggle.active span:nth-child(3) {
+    top: 18px;
+    -webkit-transform: rotate(45deg);
+    -moz-transform: rotate(45deg);
+    transform: rotate(45deg);
 }
