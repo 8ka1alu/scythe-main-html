@@ -1,19 +1,42 @@
-function hamburger() {
-　　document.getElementById('line1').classList.toggle('linea');
-　　document.getElementById('line2').classList.toggle('lineb');
-　　document.getElementById('line3').classList.toggle('linec');
-　　document.getElementById('target').classList.toggle('slidex');
-　　document.getElementById('nav_f').classList.toggle('fadein');
+// jQuery無しでナビゲーションを開閉する関数
+function navToggle() {
+
+  // 開閉ボタンを取得
+  var toggleBtn = document.getElementById('nav-toggle');
+
+  // 開閉するナビゲーション本体を取得
+  var navView = document.getElementById('nav-list');
+
+  // 開閉ボタンの現在のクラスを取得
+  var toggleBtnClass = toggleBtn.getAttribute('class');
+
+  // 開閉ボタンのクラスで条件分岐
+  // 1. 開閉ボタンのクラスが「close」だったら
+  if(toggleBtnClass == 'nav-toggle-button close') {
+
+    // 閉じている状態のクラスを削除
+    toggleBtn.classList.remove('close');
+    navView.classList.remove('close');
+
+    // 開いている状態のクラスを付与
+    toggleBtn.classList.add('open');
+    navView.classList.add('open');
+
+  }
+
+  // 2. 開閉ボタンのクラスが「open」だったら
+  else {
+
+    // 開いている状態のクラスを削除
+    toggleBtn.classList.remove('open');
+    navView.classList.remove('open');
+
+    // 閉じている状態のクラスを付与
+    toggleBtn.classList.add('close');
+    navView.classList.add('close');
+  }
+
 }
 
-document.getElementById('target').addEventListener('click', function () {
-　　hamburger();
-});
-
-let list = document.getElementsByClassName('list');
-
-for (let i = 0; i < list.length; i++) {
-　　list[i].addEventListener('click', function () {
-　　　　hamburger();
-    });
-}
+// 指定IDをクリックした際に関数を実行
+document.getElementById('nav-toggle').onclick = navToggle;
