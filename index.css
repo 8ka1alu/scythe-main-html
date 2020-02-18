@@ -143,7 +143,7 @@ background-attachment: fixed;
   top: 0;
   right: 0;
   z-index: 1000;
-  background-color: #FFF;
+  background-color: rgba(255, 255, 255, 0.5);
 }
 .zdo_drawer_menu .zdo_drawer_nav_wrapper.open {
   transform: translate(0);
@@ -166,6 +166,6 @@ background-attachment: fixed;
   padding: 112px 24px;
 }
 .zdo_drawer_menu .zdo_drawer_nav li {
-  font-size: 16px;
+  font-size: 24px;
   margin-bottom: 15px;
 }
