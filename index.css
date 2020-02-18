@@ -1,111 +1,171 @@
 body {
-  background-image: url("https://cdn.discordapp.com/attachments/670982490999226370/670994964712521751/images-1.jpg");
-  background-repeat: no-repeat;
-  background-attachment: fixed; 
-}
-nav.globalMenuSp {
-    position: fixed;
-    z-index: 2;
-    top: 0;
-    left: 0;
-    background: #fff;
-    color: #000;
-    text-align: center;
-    transform: translateY(-100%);
-    transition: all 0.6s;
-    width: 100%;
-}
- 
-nav.globalMenuSp ul {
-    background: #ccc;
-    margin: 0 auto;
-    padding: 0;
-    width: 100%;
-}
- 
-nav.globalMenuSp ul li {
-    font-size: 1.1em;
-    list-style-type: none;
-    padding: 0;
-    width: 100%;
-    border-bottom: 1px dotted #333;
-}
- 
-/* 最後はラインを描かない */
-nav.globalMenuSp ul li:last-child {
-    padding-bottom: 0;
-    border-bottom: none;
-}
- 
-nav.globalMenuSp ul li a {
-    display: block;
-    color: #000;
-    padding: 1em 0;
-}
- 
-/* このクラスを、jQueryで付与・削除する */
-nav.globalMenuSp.active {
-    transform: translateY(0%);
+background-image: url("https://cdn.discordapp.com/attachments/670982490999226370/670994964712521751/images-1.jpg");
+background-repeat: no-repeat;
+background-attachment: fixed;
 }
 
-.navToggle {
-    display: block;
-    position: fixed;    /* bodyに対しての絶対位置指定 */
-    right: 13px;
-    top: 12px;
-    width: 42px;
-    height: 51px;
-    cursor: pointer;
-    z-index: 3;
-    background: #666;
-    text-align: center;
-}
- 
-.navToggle span {
-    display: block;
-    position: absolute;    /* .navToggleに対して */
-    width: 30px;
-    border-bottom: solid 3px #eee;
-    -webkit-transition: .35s ease-in-out;
-    -moz-transition: .35s ease-in-out;
-    transition: .35s ease-in-out;
-    left: 6px;
-}
- 
-.navToggle span:nth-child(1) {
-    top: 9px;
-}
- 
-.navToggle span:nth-child(2) {
-    top: 18px;
-}
- 
-.navToggle span:nth-child(3) {
-    top: 27px;
-}
- 
-.navToggle span:nth-child(4) {
-    border: none;
-    color: #eee;
-    font-size: 9px;
-    font-weight: bold;
-    top: 34px;
+.zdo_drawer_button * {
+  margin: 0;
+  padding: 0;
+  outline: none;
+  border: none;
+  font: inherit;
+  font-family: inherit;
+  font-size: 100%;
+  font-style: inherit;
+  font-weight: inherit;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  text-align: left;
+  text-decoration: none;
+  list-style: none;
 }
 
-/* 最初のspanをマイナス45度に */
-.navToggle.active span:nth-child(1) {
-    top: 18px;
-    left: 6px;
-    -webkit-transform: rotate(-45deg);
-    -moz-transform: rotate(-45deg);
-    transform: rotate(-45deg);
+.zdo_drawer_button {
+  display: block;
+  padding: 0;
+  width: 42px;
+  height: 26px;
+  position: relative;
+  background: none;
+  border: none;
+  text-align: center;
+  letter-spacing: 0.1em;
+  cursor: pointer;
+  outline: none;
 }
- 
-/* 2番目と3番目のspanを45度に */
-.navToggle.active span:nth-child(2),
-.navToggle.active span:nth-child(3) {
-    top: 18px;
-    -webkit-transform: rotate(45deg);
-    -moz-transform: rotate(45deg);
-    transform: rotate(45deg);
+
+.zdo_drawer_button .zdo_drawer_bar {
+  display: block;
+  width: 42px;
+  height: 2px;
+  transition: all 0.2s;
+  transform-origin: 0% 0%;
+  transform: translateY(-50%);
+  position: absolute;
+  left: 0;
+}
+
+.zdo_drawer_button .zdo_drawer_bar1 {
+  top: 0;
+}
+
+.zdo_drawer_button .zdo_drawer_bar2 {
+  top: 50%;
+}
+
+.zdo_drawer_button .zdo_drawer_bar3 {
+  top: 100%;
+}
+
+.zdo_drawer_button.active .zdo_drawer_bar {
+  width: 36.77px;
+  left: 8px;
+}
+
+.zdo_drawer_button.active .zdo_drawer_bar1 {
+  transform: rotate(0.7853981634rad) translateY(-50%);
+  top: 0px;
+}
+
+.zdo_drawer_button.active .zdo_drawer_bar2 {
+  opacity: 0;
+}
+
+.zdo_drawer_button.active .zdo_drawer_bar3 {
+  transform: rotate(-0.7853981634rad) translateY(-50%);
+  top: calc(100% - 0px);
+}
+
+.zdo_drawer_button.active .zdo_drawer_menu_text {
+  display: none;
+}
+
+.zdo_drawer_button.active .zdo_drawer_close {
+  display: block;
+}
+
+.zdo_drawer_text {
+  width: 100%;
+  position: absolute;
+  bottom: -20px;
+  left: 0;
+  text-align: center;
+  font-size: 10px;
+}
+
+.zdo_drawer_close {
+  letter-spacing: 0.08em;
+  display: none;
+}
+
+/*+++ Default Button Color +++*/
+.zdo_drawer_button {
+  color: #2274a5;
+}
+
+.zdo_drawer_button .zdo_drawer_bar {
+  background-color: #2274a5;
+}
+
+/* === Hambuerger Button's Style End === */
+.zdo_drawer_menu .zdo_drawer_button {
+  /*+++ Hamburger Button Position +++*/
+  position: fixed;
+  top: 32px;
+  right: 32px;
+  z-index: 1001;
+}
+.zdo_drawer_menu a {
+  color: inherit;
+  text-decoration: none;
+}
+.zdo_drawer_menu a:visited {
+  color: inherit;
+}
+.zdo_drawer_menu .zdo_drawer_bg {
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  z-index: 999;
+  background-color: rgba(51, 51, 51, 0.5);
+  display: none;
+  top: 0;
+  left: 0;
+}
+.zdo_drawer_menu .zdo_drawer_nav_wrapper {
+  width: 312px;
+  height: 100%;
+  transition: all 0.2s;
+  transform: translate(312px);
+  position: fixed;
+  top: 0;
+  right: 0;
+  z-index: 1000;
+  background-color: #FFF;
+}
+.zdo_drawer_menu .zdo_drawer_nav_wrapper.open {
+  transform: translate(0);
+}
+.zdo_drawer_menu.left .zdo_drawer_button {
+  right: auto;
+  left: 32px;
+}
+.zdo_drawer_menu.left .zdo_drawer_nav_wrapper {
+  transform: translate(-312px);
+  right: auto;
+  left: 0;
+}
+.zdo_drawer_menu.left .zdo_drawer_nav_wrapper.open {
+  transform: translate(0);
+}
+
+/*+++ Default Navigation CSS +++*/
+.zdo_drawer_menu .zdo_drawer_nav {
+  padding: 112px 24px;
+}
+.zdo_drawer_menu .zdo_drawer_nav li {
+  font-size: 16px;
+  margin-bottom: 15px;
 }
