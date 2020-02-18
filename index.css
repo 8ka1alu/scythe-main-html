@@ -1,138 +1,78 @@
-
-*{
-    -webkit-box-sizing: border-box;
-    box-sizing: border-box;
-}
-
 body{
-    margin: 0;
-    color: #313131;
     background-image: url("https://cdn.discordapp.com/attachments/670982490999226370/670994964712521751/images-1.jpg");
     background-repeat: no-repeat;
-    background-attachment: fixed;
-    
+    background-attachment: fixed;    
 }
 
-h2{
-    margin: 0;
-    font-family: "メイリオ", sans-serif;
-    line-height: 100vh;
+/*---------------------------------------------
+  Hamburger Nav
+  ---------------------------------------------*/
+.hamburger-nav {
+  margin-top: 1.5em;
+  width: 30px;
+  text-align: right;
 }
 
-/* header */
-header {
-    width: 100%;
-    position: relative;
+.nav-list {
+  display: none;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: -1;
+  width: 100%;
+  height: 100vh;
+  box-sizing: border-box;
+  list-style: none;
+  margin: 0;
+  padding: 60px 0 30px;
+  background: rgba(0, 0, 0, 0.95);
+  text-align: center;
 }
-
-.pfix{
-    width: 100%;
-    position: fixed;
+.nav-list > li a {
+  display: block;
+  padding: 10px 1em;
+  text-decoration: none;
+  color: white;
 }
-
-/* nav_menu */
-.nav{
-    position: absolute;
-    height: 100vh;
-    width: 100%;
-    left: -100%;
-    background: rgba(99, 99, 99,.95);
-    -webkit-transition: 1.5s;
-    transition: 1.5s;
+.nav-list.open {
+  display: block;
+  z-index: 1;
+  animation: showAni .5s ease 0s 1 normal;
 }
-
-ul{
-    margin: 0;
-    padding: 0;
-}
-
-li{
-    height: calc(100vh/5);
-    line-height: 187.39px;
-    list-style-type: none;
-    font-size: 3em;
-    text-align: center;
-}
-
-a{
-    display: block;
-    text-decoration: none;
-    color: #fff;
-}
-
-/* hamburger_line */
-#target {
-    width: 40px;
-    height: 30px;
-    position: absolute;
-    top: 25px;
-    left: 50px;
-    cursor: pointer;
-    display: block;
-    -webkit-transition: 1.5s;
-    transition: 1.5s;
-}
-
-.target_inner{
-    width: 40px;
-    height: 30px;
-    position: relative;
-}
-
-.target_inner_line {
-    display: block;
-    width: 40px;
-    height: 5px;
-    background: #636363;
-    -webkit-transition: 1.5s;
-    transition: 1.5s;
-    border-radius: 50px;
-    position: absolute;
-}
-
-.target_inner_1 {
-    top: 0;
-}
-
-.target_inner_2 {
-    top: 13px;
-}
-
-.target_inner_3 {
-    top: 26px;
-}
-
-/* 動き */
-.fadein{
-    -webkit-transform: translateX(100%);
-    transform: translateX(100%);
-}
-
-.linea,.lineb,.linec{
-    background: #ffffff;
-}
-
-.linea {
-    -webkit-transform: rotate(225deg);
-    transform: rotate(225deg);
-    top: 13px;
-}
-
-.lineb {
+@keyframes showAni {
+  0% {
     opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
 }
-
-.linec {
-    -webkit-transform: rotate(-225deg);
-    transform: rotate(-225deg);
-    top: 13px;
+.nav-list.close {
+  display: block;
+  opacity: 0;
+  animation: hideAni .5s ease 0s 1 normal;
 }
-
-/* main */
-main section{
-    width: 100%;
-    height: 100vh;
-    margin: 0 auto;
-    text-align: center;
-    line-height: 100vh;
+@keyframes hideAni {
+  0% {
+    opacity: 1;
+    z-index: 1;
+  }
+  100% {
+    opacity: 0;
+    z-index: -1;
+  }
+}
+.nav-toggle-button {
+  position: relative;
+  z-index: 2;
+  cursor: pointer;
+}
+.nav-toggle-button.close::before, .nav-toggle-button.open::before {
+  font-family: 'FontAwesome';
+}
+.nav-toggle-button.close::before {
+  content: '\f0c9';
+}
+.nav-toggle-button.open::before {
+  content: '\f00d';
 }
