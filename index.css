@@ -2,7 +2,8 @@ div#header {
     position: fixed;
     top: 0;
     left:0;
-    height:50px;
+    width: 42px;
+    height: 26px;
     background-color: #FF0040;
 }
 body {
