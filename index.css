@@ -1,8 +1,9 @@
-header {
-position: fixed;
-width: 100%;
-height: 200px;
-background-color: #d4d4d4;
+div#header {
+    position: fixed;
+    top: 0;
+    left:0;
+    height:50px;
+    background-color: #FF0040;
 }
 body {
 background-image: url("https://cdn.discordapp.com/attachments/670982490999226370/670994964712521751/images-1.jpg");
